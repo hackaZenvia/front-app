@@ -1,18 +1,29 @@
 import React from "react";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { ListItem } from "react-native-elements";
+import { Messages } from "../../constants/Messages";
 import { styles } from "./styles";
-import { Text, View } from "react-native";
-import EditScreenInfo from "../../components/EditScreenInfo";
 
-class Messages extends React.Component {
+class MessagesScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Página Messages</Text>
-        <View style={styles.separator} />
-        <Text>Olá tudo bem?</Text>
-      </View>
+      <SafeAreaView>
+        <ScrollView>
+          {Messages.map((user, i) => (
+            <ListItem
+              key={i}
+              leftAvatar={{ source: user.pic, size: "large" }}
+              title={user.title}
+              titleStyle={styles.title}
+              subtitle={user.message}
+              subtitleStyle={styles.subtitle}
+              chevron
+            />
+          ))}
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
-export default Messages;
+export default MessagesScreen;
