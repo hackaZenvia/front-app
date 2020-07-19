@@ -1,18 +1,34 @@
 import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Text, Tile } from "react-native-elements";
+import { SafeAreaView } from "react-navigation";
+import { HomeScreenPics } from "../../constants/Pics";
 import { styles } from "./styles";
-import { Text, View } from "react-native";
-import EditScreenInfo from "../../components/EditScreenInfo";
 
-class TopPicks extends React.Component {
+class TopPicksScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Página TopPicks</Text>
-        <View style={styles.separator} />
-        <Text>Olá tudo bem?</Text>
-      </View>
+      <SafeAreaView>
+        <ScrollView>
+          <Text h2 h2Style={styles.h2Style}>
+            Top Anúncios
+          </Text>
+          <View style={styles.grid}>
+            {HomeScreenPics.map(({ pic, title }, i) => (
+              <Tile
+                imageSrc={pic}
+                activeOpacity={0.9}
+                title={title}
+                titleStyle={styles.title}
+                featured
+                key={title}
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
-export default TopPicks;
+export default TopPicksScreen;
