@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   Dimensions,
 } from "react-native";
-
+import { styles } from "./styles";
 import data from "./Data";
 import Swiper from "react-native-deck-swiper";
 import { Transitioning, Transition } from "react-native-reanimated";
@@ -66,6 +66,12 @@ const CardDetails = ({ index }) => (
       {data[index].name}
     </Text>
     <Text style={[styles.text, styles.price]}>{data[index].price}</Text>
+    <Text style={[styles.text, styles.vendedor]}>
+      Vendedor: {data[index].vendedor}
+    </Text>
+    <Text style={[styles.text, styles.vendedor]}>
+      Distância: {data[index].distancia}
+    </Text>
   </View>
 );
 
@@ -182,52 +188,3 @@ export default function Home() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
-  swiperContainer: {
-    flex: 0.55,
-  },
-  bottomContainer: {
-    flex: 0.45,
-    justifyContent: "space-evenly",
-  },
-  bottomContainerMeta: { alignContent: "flex-end", alignItems: "center" },
-  bottomContainerButtons: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-  cardImage: {
-    width: 160,
-    flex: 1,
-    resizeMode: "contain",
-  },
-  card: {
-    flex: 0.45,
-    borderRadius: 8,
-    shadowRadius: 25,
-    shadowColor: colors.black,
-    shadowOpacity: 0.08,
-    shadowOffset: { width: 0, height: 0 },
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colors.white,
-  },
-  text: {
-    textAlign: "center",
-    fontSize: 50,
-    backgroundColor: "transparent",
-  },
-  done: {
-    textAlign: "center",
-    fontSize: 30,
-    color: colors.white,
-    backgroundColor: "transparent",
-  },
-  text: { fontFamily: "Courier" },
-  heading: { fontSize: 24, marginBottom: 10, color: colors.gray },
-  price: { color: colors.blue, fontSize: 32, fontWeight: "500" },
-});
